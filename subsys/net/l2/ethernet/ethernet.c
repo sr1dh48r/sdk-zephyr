@@ -740,11 +740,11 @@ static inline int ethernet_enable(struct net_if *iface, bool state)
 		net_arp_clear_cache(iface);
 
 		if (eth->stop) {
-			eth->stop(net_if_get_device(iface));
+			return eth->stop(net_if_get_device(iface));
 		}
 	} else {
 		if (eth->start) {
-			eth->start(net_if_get_device(iface));
+			return eth->start(net_if_get_device(iface));
 		}
 	}
 
